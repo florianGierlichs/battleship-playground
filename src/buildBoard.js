@@ -4,7 +4,9 @@ export default function buildBoard(longitude, latitude) {
   document.body.appendChild(container);
   container.innerText = 'Hallo Welt';
 
-  longitude.forEach((element) => {
+  const reversedLongitude = longitude.reverse();
+
+  reversedLongitude.forEach((element) => {
     const row = document.createElement('div');
     row.className = 'row';
     container.appendChild(row);
