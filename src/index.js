@@ -11,10 +11,11 @@ console.log(longitude);
 const container = document.createElement('div');
 container.className = 'container';
 document.body.appendChild(container);
+container.innerText = 'Hallo Welt';
 
 longitude.forEach(() => {
   const row = document.createElement('div');
-  container.className = 'row';
+  row.className = 'row';
   container.appendChild(row);
   latitude.forEach(() => {
     const square = document.createElement('div');
