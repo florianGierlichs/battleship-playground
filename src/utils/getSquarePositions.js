@@ -4,14 +4,12 @@ export default function getSquarePositions(lat, lon) {
   let j = 0;
   let squarePositions = [];
   let latPosPlusLonPos = [];
-  let column = [];
 
   for (; i < lat.length; i++) {
     for (; j < lon.length; j++) {
       latPosPlusLonPos = lat[j] + lonString[i];
-      column.push(latPosPlusLonPos);
+      squarePositions.push(latPosPlusLonPos);
     }
-    squarePositions = [...column];
     j = 0;
   }
 
