@@ -1,40 +1,32 @@
+import createElement from './utils/createElement';
+
 export default function buildBoard(longitude, latitude) {
-  const container = document.createElement('div');
-  container.className = 'container';
+  const container = createElement('div', 'container', 'Hallo Welt');
   document.body.appendChild(container);
-  container.innerText = 'Hallo Welt';
 
   const reversedLongitude = longitude.reverse();
 
   reversedLongitude.forEach((element) => {
-    const row = document.createElement('div');
-    row.className = 'row';
+    const row = createElement('div', 'row');
     container.appendChild(row);
 
-    const latSquare = document.createElement('div');
-    latSquare.className = 'latSquare';
-    latSquare.innerText = element;
+    const latSquare = createElement('div', 'latSquare', element);
     row.appendChild(latSquare);
 
     latitude.forEach(() => {
-      const square = document.createElement('div');
-      square.className = 'square';
+      const square = createElement('div', 'square');
       row.appendChild(square);
     });
   });
 
-  const latRow = document.createElement('div');
-  latRow.className = 'latRow';
+  const latRow = createElement('div', 'latRow');
   container.appendChild(latRow);
 
-  const corner = document.createElement('div');
-  corner.className = 'corner';
+  const corner = createElement('div', 'corner');
   latRow.appendChild(corner);
 
   latitude.forEach((element) => {
-    const lonSquare = document.createElement('div');
-    lonSquare.className = 'lonSquare';
-    lonSquare.innerText = element;
+    const lonSquare = createElement('div', 'lonSquare', element);
     latRow.appendChild(lonSquare);
   });
 }
