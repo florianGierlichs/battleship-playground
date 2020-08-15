@@ -13,6 +13,5 @@ console.log(longitude);
 const squarePositions = getSquarePositions(latitude, longitude);
 buildBoard(latitude, longitude);
 
-const boardObjects = getBoardObjects();
-const { getPlayerDefBoard } = boardObjects;
-console.log('getPlayerDefBoard', getPlayerDefBoard(squarePositions));
+const { playerDefBoardObject } = getBoardObjects(squarePositions);
+console.log('playerDefBoardObject', playerDefBoardObject);

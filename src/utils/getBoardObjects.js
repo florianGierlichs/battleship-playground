@@ -1,11 +1,11 @@
-export default function getBoardObjects() {
-  const getPlayerDefBoard = (squarePositions) => {
-    const playerDefBoard = {};
+export default function getBoardObjects(squarePositions) {
+  const getPlayerDefBoardObject = (squarePositions) => {
+    const playerDefBoardObject = {};
     squarePositions.forEach((square) => {
-      playerDefBoard[square] = { gotHit: false, hasShip: false };
+      playerDefBoardObject[square] = { gotHit: false, hasShip: false };
     });
-    return playerDefBoard;
+    return playerDefBoardObject;
   };
-
-  return { getPlayerDefBoard };
+  const playerDefBoardObject = getPlayerDefBoardObject(squarePositions);
+  return { playerDefBoardObject };
 }
