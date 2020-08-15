@@ -1,11 +1,21 @@
 export default function getBoardObjects(squarePositions) {
-  const getPlayerDefBoardObject = (squarePositions) => {
-    const playerDefBoardObject = {};
+  const getPlayerDefenseObject = (squarePositions) => {
+    const playerDefenseObject = {};
     squarePositions.forEach((square) => {
-      playerDefBoardObject[square] = { gotHit: false, hasShip: false };
+      playerDefenseObject[square] = { gotHit: false, hasShip: false };
     });
-    return playerDefBoardObject;
+    return playerDefenseObject;
   };
-  const playerDefBoardObject = getPlayerDefBoardObject(squarePositions);
-  return { playerDefBoardObject };
+
+  const getPlayerAttackObject = (squarePositions) => {
+    const playerAttackObject = {};
+    squarePositions.forEach((square) => {
+      playerAttackObject[square] = { gotHit: false, hasShip: false };
+    });
+    return playerAttackObject;
+  };
+
+  const playerDefenseObject = getPlayerDefenseObject(squarePositions);
+  const playerAttackObject = getPlayerAttackObject(squarePositions);
+  return { playerDefenseObject, playerAttackObject };
 }
