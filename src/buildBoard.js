@@ -1,14 +1,13 @@
 import createElement from './utils/createElement';
 import getSquarePositions from './utils/getSquarePositions';
 
-export default function buildBoard(longitude, latitude) {
+export default function buildBoard(latitude, longitude) {
   const container = createElement('div', 'container', 'Hallo Welt');
   document.body.appendChild(container);
 
   const reversedLongitude = longitude.reverse();
 
   const squarePositions = getSquarePositions(latitude, longitude);
-  console.log('squarePositions', squarePositions);
 
   let j = 0;
   reversedLongitude.forEach((element) => {
