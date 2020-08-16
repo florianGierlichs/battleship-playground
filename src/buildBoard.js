@@ -28,8 +28,8 @@ export default function buildBoard(latitude, longitude) {
     rowB.appendChild(latSquareB);
 
     for (let i = 0; i < latitude.length; i++) {
-      const squareA = createElement('div', 'square');
-      const squareB = createElement('div', 'square');
+      const squareA = createElement('div', 'squareDefense');
+      const squareB = createElement('div', 'squareAttack');
       rowA.appendChild(squareA);
       rowB.appendChild(squareB);
       let position = squarePositions[j];
