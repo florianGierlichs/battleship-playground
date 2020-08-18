@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^4.17.20"
+  },
   "devDependencies": {
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^4.2.0",
