@@ -1,3 +1,4 @@
+const _ = require('lodash');
 import getBoardObjects from './utils/getBoardObjects';
 import getSquarePositions from './utils/getSquarePositions';
 
@@ -20,9 +21,18 @@ export default function game(size, latitude, longitude) {
   const squares = [...squaresNodeList];
 
   function handleClick(square) {
-    console.log(square.attributes.position.value);
+    const clickedSqaure = square.attributes.position.value;
+    const playerDefenseObjectSquare = playerDefenseObject[clickedSqaure];
+    // console.log(clickedSqaure);
+    // console.log(playerDefenseObjectSquare);
 
-    square.classList.add('placedShip');
+    if (!playerDefenseObjectSquare.hasShip) {
+      playerDefenseObjectSquare.hasShip = true;
+      square.classList.add('placedShip');
+      console.log('playerDefenseObject', playerDefenseObject);
+      const test = _.map(playerDefenseObject, (k) => k.hasShip === true);
+      console.log(test);
+    }
   }
 
   squares.forEach((square) =>
