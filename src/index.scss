@@ -9,7 +9,7 @@ body {
   display: flex;
 }
 
-.Boards {
+.boards {
   width: 50%;
   text-align: center;
   margin: 20px;
@@ -42,4 +42,16 @@ body {
 
 .placedShip {
   background-color: saddlebrown;
+}
+
+.emptySquareHit {
+  background-color: red;
+}
+
+.shipHit {
+  background-color: seagreen;
+}
+
+.playShipGotHit {
+  background-color: blue;
 }
