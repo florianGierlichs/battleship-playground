@@ -5,48 +5,74 @@ import getSquarePositions from './utils/getSquarePositions';
 let gamemode = 'positioning';
 
 export default function game(size, latitude, longitude) {
+  setTimeout(() => alert(`Place ${size} ships on you defense board`), 100);
+
   const squarePositions = getSquarePositions(latitude, longitude);
 
-  const {
-    playerDefenseObject,
-    playerAttackObject,
-    // computerDefenseObject,
-    // computerAttackObject,
-  } = getBoardObjects(squarePositions);
-
-  console.log('playerDefenseObject', playerDefenseObject);
-  console.log('playerAttackObject', playerAttackObject);
-  // console.log('computerDefenseObject', computerDefenseObject);
-  // console.log('computerAttackObject', computerAttackObject);
+  const { playerDefenseObject, playerAttackObject } = getBoardObjects(
+    squarePositions
+  );
 
   const squaresNodeList = document.querySelectorAll('.squareDefense');
   const squares = [...squaresNodeList];
 
   let ships = 0;
+  let playerSuccessfulHits = 0;
+  let computerSuccessfulHits = 0;
 
   const handleAttack = (square) => {
     //player attack
-    if (playerAttackObject[square.getAttribute('position')].hasShip === true) {
-      square.classList.add('shipHit');
-    } else if (
-      playerAttackObject[square.getAttribute('position')].hasShip === false
+    if (
+      square.classList.contains('shipHit') ||
+      square.classList.contains('emptySquareHit')
     ) {
-      square.classList.add('emptySquareHit');
+      return;
+    } else {
+      if (
+        playerAttackObject[square.getAttribute('position')].hasShip === true
+      ) {
+        square.classList.add('shipHit');
+        playerSuccessfulHits++;
+        if (playerSuccessfulHits === size) {
+          setTimeout(() => alert('Player won!'), 100);
+        }
+      } else if (
+        playerAttackObject[square.getAttribute('position')].hasShip === false
+      ) {
+        square.classList.add('emptySquareHit');
+      }
     }
 
     //computer attack
     const computerAttack = () => {
-      const computerAttackSquare = _.sample(playerDefenseObject);
-      if (computerAttackSquare.gotHit === true) {
-        console.log('was true');
-        computerAttack();
-      } else {
-        computerAttackSquare.gotHit = true;
-        console.log('test', Object.getOwnPropertyNames(computerAttackSquare));
+      const randomKey = Math.round(
+        Object.keys(playerDefenseObject).length * Math.random()
+      );
+      if (!(randomKey >= Object.keys(playerDefenseObject).length)) {
+        const randomComputerAttack = Object.keys(playerDefenseObject)[
+          randomKey
+        ];
 
-        //
-        //--------- hier weiter arbeiten. sample ist evtl nicht das richtige hier
-        //
+        const computerAttackSquareElement = _.filter(squares, function (ele) {
+          return ele.attributes[1].value === randomComputerAttack;
+        });
+
+        if (playerDefenseObject[randomComputerAttack].gotHit === true) {
+          computerAttack();
+        } else {
+          playerDefenseObject[randomComputerAttack].gotHit = true;
+          if (playerDefenseObject[randomComputerAttack].hasShip === true) {
+            computerAttackSquareElement[0].classList.add('playShipGotHit');
+            computerSuccessfulHits++;
+            if (computerSuccessfulHits === size) {
+              setTimeout(() => alert('computer won!'), 100);
+            }
+          } else {
+            computerAttackSquareElement[0].classList.add('emptySquareHit');
+          }
+        }
+      } else {
+        computerAttack();
       }
     };
 
@@ -54,10 +80,10 @@ export default function game(size, latitude, longitude) {
   };
 
   const handleClick = (square) => {
-    console.log('clicked');
     const clickedSqaure = square.attributes.position.value;
     const playerDefenseObjectSquare = playerDefenseObject[clickedSqaure];
 
+    //set player ships
     if (gamemode === 'positioning' && !playerDefenseObjectSquare.hasShip) {
       playerDefenseObjectSquare.hasShip = true;
       square.classList.add('placedShip');
@@ -65,8 +91,9 @@ export default function game(size, latitude, longitude) {
       ships++;
     }
 
-    if (ships >= 6) {
+    if (ships >= size) {
       gamemode = 'fighting';
+      setTimeout(() => alert('Start attacking on your attack board'), 100);
       squares.forEach((square) => {
         square.onclick = undefined;
       });

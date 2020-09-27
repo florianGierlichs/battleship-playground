@@ -36,6 +36,8 @@ export default function getBoardObjects(squarePositions) {
   const computerDefenseObject = getComputerDefenseObject(squarePositions);
   const computerAttackObject = getComputerAttackObject(squarePositions);
 
+  //todo: remove computer objects, because they are not needed
+
   return {
     playerDefenseObject,
     playerAttackObject,
