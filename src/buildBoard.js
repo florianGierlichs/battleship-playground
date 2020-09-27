@@ -5,8 +5,8 @@ export default function buildBoard(latitude, longitude) {
   const container = createElement('div', 'container');
   document.body.appendChild(container);
 
-  const playerDefBoard = createElement('div', 'Boards', 'playerDefBoard');
-  const playerAttackBoard = createElement('div', 'Boards', 'playerAttackBoard');
+  const playerDefBoard = createElement('div', 'boards', 'playerDefBoard');
+  const playerAttackBoard = createElement('div', 'boards', 'playerAttackBoard');
 
   container.appendChild(playerDefBoard);
   container.appendChild(playerAttackBoard);
@@ -28,8 +28,8 @@ export default function buildBoard(latitude, longitude) {
     rowB.appendChild(latSquareB);
 
     for (let i = 0; i < latitude.length; i++) {
-      const squareA = createElement('div', 'square');
-      const squareB = createElement('div', 'square');
+      const squareA = createElement('div', 'squareDefense');
+      const squareB = createElement('div', 'squareAttack');
       rowA.appendChild(squareA);
       rowB.appendChild(squareB);
       let position = squarePositions[j];

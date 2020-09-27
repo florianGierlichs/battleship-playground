@@ -9,7 +9,7 @@ body {
   display: flex;
 }
 
-.Boards {
+.boards {
   width: 50%;
   text-align: center;
   margin: 20px;
@@ -32,9 +32,26 @@ body {
   border: 2px solid green;
 }
 
-.square {
+.squareDefense,
+.squareAttack {
   width: 50px;
   height: 50px;
   background-color: tomato;
   border: 2px solid green;
+}
+
+.placedShip {
+  background-color: saddlebrown;
+}
+
+.emptySquareHit {
+  background-color: red;
+}
+
+.shipHit {
+  background-color: seagreen;
+}
+
+.playShipGotHit {
+  background-color: blue;
 }

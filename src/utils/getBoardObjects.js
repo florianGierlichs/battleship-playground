@@ -15,7 +15,33 @@ export default function getBoardObjects(squarePositions) {
     return playerAttackObject;
   };
 
+  const getComputerDefenseObject = (squarePositions) => {
+    const computerAttackObject = {};
+    squarePositions.forEach((square) => {
+      computerAttackObject[square] = { gotHit: false, hasShip: false };
+    });
+    return computerAttackObject;
+  };
+
+  const getComputerAttackObject = (squarePositions) => {
+    const computerAttackObject = {};
+    squarePositions.forEach((square) => {
+      computerAttackObject[square] = { gotHit: false, hasShip: false };
+    });
+    return computerAttackObject;
+  };
+
   const playerDefenseObject = getPlayerDefenseObject(squarePositions);
   const playerAttackObject = getPlayerAttackObject(squarePositions);
-  return { playerDefenseObject, playerAttackObject };
+  const computerDefenseObject = getComputerDefenseObject(squarePositions);
+  const computerAttackObject = getComputerAttackObject(squarePositions);
+
+  //todo: remove computer objects, because they are not needed
+
+  return {
+    playerDefenseObject,
+    playerAttackObject,
+    computerDefenseObject,
+    computerAttackObject,
+  };
 }
