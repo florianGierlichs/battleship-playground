@@ -5,7 +5,7 @@ import getSquarePositions from './utils/getSquarePositions';
 let gamemode = 'positioning';
 
 export default function game(size, latitude, longitude) {
-  setTimeout(() => alert(`Place ${size} ships on you defense board`), 100);
+  setTimeout(() => alert(`Place ${size} ships on your board`), 100);
 
   const squarePositions = getSquarePositions(latitude, longitude);
 
@@ -62,7 +62,7 @@ export default function game(size, latitude, longitude) {
         } else {
           playerDefenseObject[randomComputerAttack].gotHit = true;
           if (playerDefenseObject[randomComputerAttack].hasShip === true) {
-            computerAttackSquareElement[0].classList.add('playShipGotHit');
+            computerAttackSquareElement[0].classList.add('shipHit');
             computerSuccessfulHits++;
             if (computerSuccessfulHits === size) {
               setTimeout(() => alert('computer won!'), 100);
@@ -93,7 +93,7 @@ export default function game(size, latitude, longitude) {
 
     if (ships >= size) {
       gamemode = 'fighting';
-      setTimeout(() => alert('Start attacking on your attack board'), 100);
+      setTimeout(() => alert('Start attacking the computer board'), 100);
       squares.forEach((square) => {
         square.onclick = undefined;
       });
