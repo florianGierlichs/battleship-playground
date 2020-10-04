@@ -5,8 +5,8 @@ export default function buildBoard(latitude, longitude) {
   const container = createElement('div', 'container');
   document.body.appendChild(container);
 
-  const playerDefBoard = createElement('div', 'boards', 'playerDefBoard');
-  const playerAttackBoard = createElement('div', 'boards', 'playerAttackBoard');
+  const playerDefBoard = createElement('div', 'boards', 'Player Board');
+  const playerAttackBoard = createElement('div', 'boards', 'Computer Board');
 
   container.appendChild(playerDefBoard);
   container.appendChild(playerAttackBoard);

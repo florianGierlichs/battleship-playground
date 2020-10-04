@@ -14,7 +14,8 @@ body {
   text-align: center;
   margin: 20px;
   padding: 20px 0;
-  background-color: skyblue;
+  background-color: #83d7ee;
+  font-size: 18px;
 }
 
 .row,
@@ -29,29 +30,28 @@ body {
   width: 50px;
   height: 50px;
   background-color: yellow;
-  border: 2px solid green;
+  border: 2px solid #83d7ee;
 }
 
 .squareDefense,
 .squareAttack {
   width: 50px;
   height: 50px;
-  background-color: tomato;
-  border: 2px solid green;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid #83d7ee;
 }
 
 .placedShip {
-  background-color: saddlebrown;
+  background-color: rgb(104, 104, 104);
+  color: white;
 }
 
 .emptySquareHit {
-  background-color: red;
+  background-color: rgb(84, 84, 255);
+  color: white;
 }
 
 .shipHit {
-  background-color: seagreen;
-}
-
-.playShipGotHit {
-  background-color: blue;
+  background-color: red;
+  color: white;
 }
