@@ -3,8 +3,10 @@ import boardSize from './boardSize';
 import buildBoard from './buildBoard';
 import game from './game';
 import start from './start';
+import shipAnimation from './shipAnimation';
 
 start();
+shipAnimation();
 
 const handleCreateBoard = (sizeParam) => {
   const size = sizeParam;
