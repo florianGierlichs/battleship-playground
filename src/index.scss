@@ -1,5 +1,5 @@
 body {
-  margin: 0;
+  margin: 20px 200px;
   padding: 0;
   box-sizing: border-box;
   font-family: Helvetica, Arial, sans-serif;
@@ -78,4 +78,28 @@ body {
 .shipHit {
   background-color: red;
   color: white;
+}
+
+.shipContainer {
+  width: 200px;
+}
+
+.ship {
+  width: 100%;
+  position: relative;
+  animation: shipAnimation 10s infinite;
+}
+
+@keyframes shipAnimation {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    left: 400%;
+    opacity: 0;
+  }
 }
